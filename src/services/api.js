@@ -37,7 +37,11 @@ export const sendMessageTo9Router = async (messages, endpoint, modelName, onChun
             if (data.choices && data.choices[0].delta && data.choices[0].delta.content) {
               const content = data.choices[0].delta.content;
               fullContent += content;
-              if (onChunk) onChunk(content);
+              if (onChunk) {
+                onChunk(content);
+                // Jeda buatan antar potongan teks agar animasi ngetik terlihat nyata (typewriter effect)
+                await new Promise((resolve) => setTimeout(resolve, 15));
+              }
             }
           } catch (e) {
             console.error('Error parsing stream chunk', e);
