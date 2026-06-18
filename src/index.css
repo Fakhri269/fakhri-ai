@@ -545,6 +545,21 @@ input, textarea { font-family: inherit; }
 .markdown-body strong { font-weight: 600; }
 .markdown-body em { font-style: italic; }
 
+/* ─── Streaming Cursor ───────────────────────────────── */
+.markdown-body.streaming > *:last-child::after {
+  content: '▋';
+  display: inline-block;
+  vertical-align: text-bottom;
+  animation: cursor-blink 1s step-start infinite;
+  margin-left: 6px;
+  color: var(--accent);
+  opacity: 1;
+}
+
+@keyframes cursor-blink {
+  50% { opacity: 0; }
+}
+
 /* ─── Skeleton shimmer loading ───────────────────────── */
 .skeleton-loader {
   display: flex;

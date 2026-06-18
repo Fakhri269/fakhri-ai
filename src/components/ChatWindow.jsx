@@ -67,7 +67,7 @@ const ChatWindow = ({ messages, isTyping }) => {
                     <TypingAnimation />
                   ) : (
                     <div
-                      className="markdown-body"
+                      className={`markdown-body ${isLast && isTyping ? 'streaming' : ''}`}
                       dangerouslySetInnerHTML={renderMarkdown(msg.content)}
                     />
                   )}
