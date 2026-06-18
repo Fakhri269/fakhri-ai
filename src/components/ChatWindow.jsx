@@ -6,10 +6,8 @@ import { User, Sparkles } from 'lucide-react';
 marked.setOptions({ breaks: true, gfm: true });
 
 const TypingAnimation = () => (
-  <div className="apple-typing">
-    <div className="apple-dot" />
-    <div className="apple-dot" />
-    <div className="apple-dot" />
+  <div className="spinner-container">
+    <div className="spinner-glow" />
   </div>
 );
 
