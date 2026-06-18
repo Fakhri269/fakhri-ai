@@ -545,44 +545,56 @@ input, textarea { font-family: inherit; }
 .markdown-body strong { font-weight: 600; }
 .markdown-body em { font-style: italic; }
 
-/* ─── Streaming Cursor ───────────────────────────────── */
+/* ─── Streaming Cursor (iOS Style) ─────────────────────── */
 .markdown-body.streaming > *:last-child::after {
-  content: '▋';
+  content: '';
   display: inline-block;
-  vertical-align: text-bottom;
-  animation: cursor-blink 1s step-start infinite;
-  margin-left: 6px;
-  color: var(--accent);
-  opacity: 1;
+  width: 2.5px;
+  height: 1.2em;
+  background-color: var(--accent);
+  vertical-align: middle;
+  animation: ios-cursor-blink 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  margin-left: 4px;
+  border-radius: 1px;
 }
 
-@keyframes cursor-blink {
+@keyframes ios-cursor-blink {
+  0%, 100% { opacity: 1; }
   50% { opacity: 0; }
 }
 
-/* ─── Liquid Loader ───────────────────────── */
-.liquid-loader {
+/* ─── Apple Typing Dots ───────────────────────── */
+.apple-typing {
   display: flex;
   gap: 6px;
   align-items: center;
-  padding: 8px 4px;
-  height: 32px;
+  padding: 6px 4px;
+  height: 28px;
 }
 
-.liquid-bar {
-  width: 6px;
-  height: 100%;
-  border-radius: 4px;
+.apple-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
   background: var(--accent);
-  animation: liquid-bounce 1s ease-in-out infinite;
+  opacity: 0.4;
+  animation: apple-bounce 1.4s infinite ease-in-out both;
+  box-shadow: 0 2px 4px rgba(0, 113, 227, 0.1);
 }
 
-.liquid-bar:nth-child(2) { animation-delay: 0.15s; }
-.liquid-bar:nth-child(3) { animation-delay: 0.3s; }
+.apple-dot:nth-child(1) { animation-delay: -0.32s; }
+.apple-dot:nth-child(2) { animation-delay: -0.16s; }
 
-@keyframes liquid-bounce {
-  0%, 100% { height: 8px; opacity: 0.4; }
-  50% { height: 20px; opacity: 1; box-shadow: 0 0 8px var(--accent-glow); }
+@keyframes apple-bounce {
+  0%, 80%, 100% {
+    transform: scale(0.6) translateY(0);
+    opacity: 0.3;
+  }
+  40% {
+    transform: scale(1) translateY(-4px);
+    opacity: 1;
+    box-shadow: 0 4px 8px rgba(0, 113, 227, 0.5);
+  }
 }
 
 /* ═══════════════════════════════════════════════════════
