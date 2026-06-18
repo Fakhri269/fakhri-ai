@@ -6,10 +6,10 @@ import { User, Sparkles } from 'lucide-react';
 marked.setOptions({ breaks: true, gfm: true });
 
 const TypingAnimation = () => (
-  <div className="typing-wave">
-    <span className="wave-dot" />
-    <span className="wave-dot" />
-    <span className="wave-dot" />
+  <div className="skeleton-loader">
+    <div className="skeleton-bar" style={{ width: '72%' }} />
+    <div className="skeleton-bar" style={{ width: '55%' }} />
+    <div className="skeleton-bar" style={{ width: '40%' }} />
   </div>
 );
 
