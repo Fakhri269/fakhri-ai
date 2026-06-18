@@ -38,6 +38,9 @@ function App() {
     setIsTyping(true);
     setMessages((prev) => [...prev, { role: 'assistant', content: '' }]);
 
+    // Beri jeda 600ms agar animasi loading (spinner) selalu terlihat sejenak
+    await new Promise((resolve) => setTimeout(resolve, 600));
+
     try {
       await sendMessageTo9Router(history, endpoint, modelName, (chunk) => {
         setMessages((prev) => {
