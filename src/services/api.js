@@ -1,11 +1,11 @@
-export const sendMessageTo9Router = async (messages, endpoint, modelName, onChunk) => {
+export const sendMessageTo9Router = async (messages, endpoint, modelName, apiKey, onChunk) => {
   try {
     const response = await fetch(endpoint, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        // 9Router doesn't strictly need a real API key, but OpenAI clients expect one
-        'Authorization': `Bearer dummy-key`, 
+        // Use the provided apiKey, fallback to dummy-key if empty
+        'Authorization': `Bearer ${apiKey || 'dummy-key'}`, 
       },
       body: JSON.stringify({
         model: modelName,

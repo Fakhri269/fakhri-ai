@@ -1,7 +1,7 @@
 import React from 'react';
 import { X } from 'lucide-react';
 
-const SettingsModal = ({ isOpen, onClose, endpoint, setEndpoint, modelName, setModelName }) => {
+const SettingsModal = ({ isOpen, onClose, endpoint, setEndpoint, modelName, setModelName, apiKey, setApiKey }) => {
   if (!isOpen) return null;
 
   return (
@@ -15,7 +15,7 @@ const SettingsModal = ({ isOpen, onClose, endpoint, setEndpoint, modelName, setM
         </div>
 
         <div className="form-group">
-          <label className="form-label">9Router Endpoint URL</label>
+          <label className="form-label">API Endpoint URL</label>
           <input
             type="text"
             className="form-input"
@@ -24,7 +24,20 @@ const SettingsModal = ({ isOpen, onClose, endpoint, setEndpoint, modelName, setM
             placeholder="http://localhost:20128/v1/chat/completions"
             spellCheck={false}
           />
-          <p className="form-hint">Default port: 20128</p>
+          <p className="form-hint">Default 9Router port: 20128</p>
+        </div>
+
+        <div className="form-group">
+          <label className="form-label">API Key</label>
+          <input
+            type="password"
+            className="form-input"
+            value={apiKey}
+            onChange={(e) => setApiKey(e.target.value)}
+            placeholder="sk-..."
+            spellCheck={false}
+          />
+          <p className="form-hint">Your secure API key.</p>
         </div>
 
         <div className="form-group">

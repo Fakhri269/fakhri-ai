@@ -16,6 +16,7 @@ function App() {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= MOBILE_BREAKPOINT);
   const [endpoint, setEndpoint] = useState('http://localhost:20128/v1/chat/completions');
   const [modelName, setModelName] = useState('gpt-4o');
+  const [apiKey, setApiKey] = useState('');
 
   // Detect mobile / desktop
   useEffect(() => {
@@ -42,7 +43,7 @@ function App() {
     await new Promise((resolve) => setTimeout(resolve, 600));
 
     try {
-      await sendMessageTo9Router(history, endpoint, modelName, (chunk) => {
+      await sendMessageTo9Router(history, endpoint, modelName, apiKey, (chunk) => {
         setMessages((prev) => {
           const updated = [...prev];
           const last = updated[updated.length - 1];
@@ -133,6 +134,8 @@ function App() {
         setEndpoint={setEndpoint}
         modelName={modelName}
         setModelName={setModelName}
+        apiKey={apiKey}
+        setApiKey={setApiKey}
       />
     </div>
   );
